@@ -1,21 +1,25 @@
-
 /**
- * CapCut Premium Unlock Script
- * Unlock by Shadowrocket Rewrite + Script
- * Author: @yourusername
+ * @name CapCut Premium Unlocker
+ * @version 1.0
+ * @description Unlock CapCut Premium (Pro) via Shadowrocket script
  */
 
-let body = JSON.parse($response.body);
+try {
+  let obj = JSON.parse($response.body);
 
-body.data = {
-  "valid": true,
-  "product_id": "com.lemon.love.premium.yearly",
-  "expired_at": 4070880000,
-  "is_trial": false,
-  "is_activated": true,
-  "sub_type": "premium",
-  "platform": "ios",
-  "auto_renew_status": true
-};
+  obj.data = {
+    valid: true,
+    is_activated: true,
+    is_trial: false,
+    product_id: "com.lemon.love.premium.yearly",
+    expired_at: 4070880000,
+    sub_type: "premium",
+    platform: "ios",
+    auto_renew_status: true
+  };
 
-$done({ body: JSON.stringify(body) });
+  $done({ body: JSON.stringify(obj) });
+} catch (e) {
+  console.log("❌ CapCut Premium Error: " + e);
+  $done({});
+}
