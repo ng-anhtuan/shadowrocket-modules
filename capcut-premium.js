@@ -1,11 +1,8 @@
-/**
- * @name CapCut Premium Unlocker
- * @version 1.0
- * @description Unlock CapCut Premium (Pro) via Shadowrocket script
- */
+console.log("✅ CapCut script intercepted!");
 
 try {
   let obj = JSON.parse($response.body);
+  console.log("📦 Original:", JSON.stringify(obj));
 
   obj.data = {
     valid: true,
@@ -18,8 +15,9 @@ try {
     auto_renew_status: true
   };
 
+  console.log("✅ Premium injected");
   $done({ body: JSON.stringify(obj) });
 } catch (e) {
-  console.log("❌ CapCut Premium Error: " + e);
+  console.log("❌ Script error: " + e);
   $done({});
 }
